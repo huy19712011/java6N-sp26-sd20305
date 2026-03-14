@@ -3,10 +3,7 @@ package org.example.java6nsp26sd20305.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.java6nsp26sd20305.entity.Todo;
 import org.example.java6nsp26sd20305.service.TodoService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +26,27 @@ public class TodoController {
     public Todo getTodo(@PathVariable long id) {
 
         return todoService.findById(id);
+    }
+
+    // POST api/todos
+    @PostMapping
+    public Todo addTodo(@RequestBody Todo todo) {
+
+        return todoService.add(todo);
+    }
+
+    // PUT api/todos/{id}
+    @PutMapping("{id}")
+    public Todo updateTodo(@RequestBody Todo todo, @PathVariable long id) {
+
+        return todoService.update(todo, id);
+    }
+
+    // DELETE api/todos/{id}
+    @DeleteMapping("{id}")
+    public Todo deleteTodo(@PathVariable long id) {
+
+        return todoService.delete(id);
     }
 
 
