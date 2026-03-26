@@ -1,9 +1,6 @@
 package org.example.java6nsp26sd20305.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "books")
 public class Book {
 
     @Id
