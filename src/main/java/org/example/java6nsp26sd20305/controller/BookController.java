@@ -1,5 +1,6 @@
 package org.example.java6nsp26sd20305.controller;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.java6nsp26sd20305.dto.BookRequest;
@@ -7,6 +8,7 @@ import org.example.java6nsp26sd20305.dto.BookResponse;
 import org.example.java6nsp26sd20305.service.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,6 +33,8 @@ public class BookController {
     }
 
     @PostMapping
+    //@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER')")
+    //@RolesAllowed("ADMIN")
     public ResponseEntity<BookResponse> add(@Valid @RequestBody BookRequest bookRequest) {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(bookService.add(bookRequest));
